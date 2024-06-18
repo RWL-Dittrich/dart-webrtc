@@ -27,6 +27,8 @@ class RTCRtpReceiverJs {
 }
 
 class RTCFactoryWeb extends RTCFactory {
+  web.RTCPeerConnection? lastCreatedJsRtcPc;
+
   RTCFactoryWeb._internal();
   static final instance = RTCFactoryWeb._internal();
 
@@ -45,6 +47,7 @@ class RTCFactoryWeb extends RTCFactory {
     final jsRtcPc = web.RTCPeerConnection(
         jsify({...constr, ...configuration}) as web.RTCConfiguration);
     final _peerConnectionId = base64Encode(jsRtcPc.toString().codeUnits);
+    lastCreatedJsRtcPc = jsRtcPc;
     return RTCPeerConnectionWeb(_peerConnectionId, jsRtcPc);
   }
 
