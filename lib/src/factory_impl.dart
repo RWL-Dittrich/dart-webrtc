@@ -27,7 +27,7 @@ class RTCRtpReceiverJs {
 }
 
 class RTCFactoryWeb extends RTCFactory {
-  web.RTCPeerConnection? lastCreatedJsRtcPc;
+  static web.RTCPeerConnection? lastCreatedJsRtcPc;
 
   RTCFactoryWeb._internal();
   static final instance = RTCFactoryWeb._internal();
